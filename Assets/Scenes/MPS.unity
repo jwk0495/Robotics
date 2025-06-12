@@ -2318,6 +2318,7 @@ MonoBehaviour:
   speed: 0
   minPosY: 0
   maxPosY: 0
+  isForward: 0
 --- !u!1 &673696015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,7 +2725,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c8efcf248ff2914da824aa82a1e4fea, type: 2}
+  - {fileID: 2100000, guid: 3ad99978fbb633e4ba3a9777d09261b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2788,6 +2789,7 @@ MonoBehaviour:
   speed: 2
   minPosY: 0.05
   maxPosY: 1.45
+  isForward: 0
 --- !u!1 &730902409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +2920,7 @@ MonoBehaviour:
   speed: 0
   minPosY: 0
   maxPosY: 0
+  isForward: 0
 --- !u!1 &743137769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4278,6 +4281,7 @@ MonoBehaviour:
   speed: 0
   minPosY: 0
   maxPosY: 0
+  isForward: 0
 --- !u!1 &1051371263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5195,10 +5199,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407468419}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -6867,10 +6871,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905843736}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

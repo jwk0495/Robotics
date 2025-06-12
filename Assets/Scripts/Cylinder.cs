@@ -1,42 +1,65 @@
 using System.Collections;
 using UnityEngine;
 
-// ½Ç¸°´õ Rod¸¦ minRange¸¸Å­ ÈÄÁø, maxRange¸¸Å­ ÀüÁø
-// ¼Ó¼º: ½Ç¸°´õ RodÀÇ transform, minRange Pos, maxRange Pos, ¼Óµµ
+// ì‹¤ë¦°ë” Rodë¥¼ minRange ë§Œí¼ í›„ì§„, maxRange ë§Œí¼ ì „ì§„
+// ì†ì„± : ì‹¤ë¦°ë” Rod ì˜ transform, minRange Pos, maxRange Pos, ì†ë„
 public class Cylinder : MonoBehaviour
 {
     public enum SolenoidType
     {
-        ´Ü¹æÇâ¼Ö·¹³ëÀÌµå,
-        ¾ç¹æÇâ¼Ö·¹³ëÀÌµå
+        ë‹¨ë°©í–¥ì†”ë ˆë…¸ì´ë“œ,
+        ì–‘ë°©í–¥ì†”ë ˆë…¸ì´ë“œ
     }
-    SolenoidType type = SolenoidType.¾ç¹æÇâ¼Ö·¹³ëÀÌµå;
+    SolenoidType type = SolenoidType.ì–‘ë°©í–¥ì†”ë ˆë…¸ì´ë“œ;
 
     public Transform cylinderRod;
-    public float speed; // °ø¾Ğ¹ëºê Á¶Àı
+    public float speed; // ê³µì••ë°¸ë¸Œ ì¡°ì ˆ
     public float minPosY;
     public float maxPosY;
+    public bool isForward;
 
-    // Update is called once per frame
+    
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Vector3 back = new Vector3(0, minPosY, 0);
             Vector3 front = new Vector3(0, maxPosY, 0);
-            StartCoroutine(MoveCylinder(back, front, true));
+            StartCoroutine(MoveCylinder(back, front,isForward));  
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Vector3 back = new Vector3(0, minPosY, 0);
+            Vector3 front = new Vector3(0, maxPosY, 0);
+            StartCoroutine(MoveCylinder(front, back,!isForward));
         }
     }
 
-    IEnumerator MoveCylinder(Vector3 from, Vector3 to, bool isForward)
+    IEnumerator MoveCylinder (Vector3 from, Vector3 to,bool isForward)
     {
-        if(isForward)
+        Vector3 direction;
+        
+        while (true)
         {
-            yield return null;
-        }
-        else
-        {
+            if (isForward)
+                direction = to - cylinderRod.localPosition;
+            
+            else
+                direction = from - cylinderRod.localPosition;
 
+            Vector3 normalizedDir = Vector3.Normalize(direction);
+            float distance = direction.magnitude;
+
+            if (distance < 0.1f)
+            {
+                cylinderRod.localPosition = to;
+                break;
+            }
+            cylinderRod.localPosition += normalizedDir * (speed * Time.deltaTime);
+
+            yield return new WaitForEndOfFrame();
         }
+
     }
+
 }
